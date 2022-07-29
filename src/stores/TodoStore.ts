@@ -1,5 +1,5 @@
 // Create our TodoStore
-import { makeObservable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 
 export interface Todo {
   id: number;

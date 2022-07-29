@@ -21,7 +21,6 @@
     "jsx": "react-jsx", 
     "experimentalDecorators": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+
 }
