@@ -36,7 +36,7 @@ class TodoStore {
   }
 
   remove(todo: Todo) {
-    this.list = this.list.filter((t) => t.id != todo.id);
+    this.list = this.list.filter((t) => t.id !== todo.id);
   }
 }
 
