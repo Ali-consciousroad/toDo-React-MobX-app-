@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import TodoStore from "../../stores/TodoStore";
 import styles from "./TodoInput.module.css";
 
@@ -10,16 +10,17 @@ const TodoInput = ({ todos }: { todos: TodoStore }) => {
   };
 
   // Performance issue with the current implementation will be addressed later. 
-  const handleButtonClick = () => {
+  const handleSubmit = (e : FormEvent) => {
+    e.preventDefault();
     todos.add(newTodo);
     setNewTodo("");
   };
 
   return (
-    <div className={styles["todo-input-group"]}>
+    <form onSubmit={handleSubmit} className={styles["todo-input-group"]}>
       <input value={newTodo} onChange={handleInputChange} />
-      <button onClick={handleButtonClick}>Add Todo</button>
-    </div>
+      <button type="submit">Add Todo</button>
+    </form>
   );
 };
 
