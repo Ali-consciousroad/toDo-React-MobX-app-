@@ -3,22 +3,21 @@ import TodoStore from "../../stores/TodoStore";
 import styles from "./TodoInput.module.css";
 
 const TodoInput = ({ todos }: { todos: TodoStore }) => {
-  const [newTodo, setNewTodo] = useState("");
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(e.target.value);
-  };
-
   // Performance issue with the current implementation will be addressed later. 
   const handleSubmit = (e : FormEvent) => {
     e.preventDefault();
-    todos.add(newTodo);
-    setNewTodo("");
+
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    const value = String(formData.get("todo-input") || "");
+
+    todos.add(value);
+    formElement.reset();
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles["todo-input-group"]}>
-      <input value={newTodo} onChange={handleInputChange} />
+      <input name="todo-input" placeholder="Add todo ..." />
       <button type="submit">Add Todo</button>
     </form>
   );
