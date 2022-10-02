@@ -13,6 +13,7 @@ class TodoStore {
   constructor() {
     makeObservable(this, {
       list: observable,
+      // The properties / actions below can alterate the observable list
       add: action,
       toggle: action,
       remove: action,

@@ -4,6 +4,7 @@
     grid-template-columns: 3fr 1fr;   
 }
 
+/* Group the button, input under the classname so they scoped by the css module */
 .todo-input-group > button, 
 .todo-input-group > input {
     padding: .5rem 1 2rem;
@@ -20,7 +21,7 @@
 
 .todo-input-group > button {
     background-color: hsl(204, 96%, 55%);
-    border: 0; 
+    border: 0; /* Remove border */
     color: hsl(0, 0%, 100%);
-    cursor: pointer; 
+    cursor: pointer; /* Change default cursor design */
 }

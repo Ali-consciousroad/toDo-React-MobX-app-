@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx", 
-    "experimentalDecorators": true
+    "experimentalDecorators": true    // Allow decorators to be used (not recommended)
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],
 

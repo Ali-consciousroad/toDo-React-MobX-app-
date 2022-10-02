@@ -1,3 +1,4 @@
+/* Use of grid here makes it easy to add spacing between list items */
 .todo-list {
     display: grid;
     gap: 1rem;
@@ -9,12 +10,13 @@
 
 .todo-list li {
     box-shadow: 0 0 10px #3333332C;
-    user-select: none;
+    user-select: none; /* Remove the possibility to select any text */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/* Here " * " is used so even if our component change, the css will sill work */
 .todo-list li > * {
     padding: 1rem;
 }
@@ -33,11 +35,12 @@
 }
 
 .todo-list .remove {
-    color: #241717;
+    color: black;
     cursor: pointer;
 }
 
-/* .todo-list .remove:not(.done) {
+/* css for remove button that doesn't have the class .done */
+/* .todo-list .remove:not(.done) { 
     display: none;
 } */
 
