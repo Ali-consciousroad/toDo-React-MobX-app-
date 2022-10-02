@@ -1,10 +1,11 @@
 // List component displaying our Todo app
-
 import { observer } from "mobx-react-lite";
-import TodoStore from "../../stores/TodoStore";
+import { useStore } from "../../stores";
+import { Todo } from "../../stores/TodoStore";
 import styles from "./TodoList.module.css";
 
-const TodoList = ({ todos }: { todos: TodoStore }) => {
+const TodoList = () => {
+  const { todos } = useStore();
   // Handle the click event
   // First parameter t is our Todo 
   const handleToggleTodo = (t: Todo) => () => {

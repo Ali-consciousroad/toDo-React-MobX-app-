@@ -7,8 +7,9 @@ const todos = new TodoStore();
 const App = () => {
   return (
     <div className="App">
-      <TodoInput todos={todos} />
-      <TodoList todos={todos} />
+      {/* Props removed to avoid prop drilling, useStore() hook is used instead */}
+      <TodoInput />
+      <TodoList />
     </div>
   );
 };
