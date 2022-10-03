@@ -1,5 +1,5 @@
 // Create our TodoStore
-import { action, makeObservable, observable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 
 export interface Todo {
   id: number;
@@ -11,13 +11,7 @@ class TodoStore {
   list: Todo[] = [];
 
   constructor() {
-    makeObservable(this, {
-      list: observable,
-      // The properties / actions below can alterate the observable list
-      add: action,
-      toggle: action,
-      remove: action,
-    });
+    makeAutoObservable(this);
   }
 
   add(title: string) {
