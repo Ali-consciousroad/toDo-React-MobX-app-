@@ -9,19 +9,16 @@ const App = () => {
   const appUI = useLocalObservable(() => ({
         todosVisible: true,
         toggleTodoVisibility() {
-          this.todosVisible = !this.todosVisible;
+          appUI.todosVisible = !appUI.todosVisible;
         },
       }));
-
-  // Change the state of the useState hook based on  click 
-  const handleClick = () => appUI.toggleTodoVisibility();
 
   return (
     <div className="App">
       {/* Props removed to avoid prop drilling, useStore() hook is used instead */}
       <TodoInput />
       <div className={styles["todo-list-wrapper"]}>
-        <h2 onClick={handleClick}>
+        <h2 onClick={appUI.toggleTodoVisibility}>
           {/* Conditional rendering of the text used as a button */}
           <span>{appUI.todosVisible ? "-" : "+"}</span>
           Todos
