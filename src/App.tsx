@@ -2,30 +2,16 @@ import TodoInput from "./Todo/TodoInput";
 import TodoList from "./Todo/TodoList";
 import styles from "./App.module.css";
 import { observer, useLocalObservable } from "mobx-react-lite";
-import { useStore } from "./stores";
-import { useEffect } from "react";
-import { when } from "mobx";
+import store, { useStore } from "./stores";
 
-const App = () => {
-  const { todos } = useStore()
-
-  useEffect(() => {
-    const promiseWhen = when(
-      () => !appUI.todosVisible, 
-    );
-  
-  promiseWhen.then(() => {
-    console.log("clean up!");
-  });
-}, []);
-
+const App = observer(({ todos } : {todos: typeof store.todos}) => {
   // Functions used to toggle the to do list when clicking on the " + " / " - " button
   const appUI = useLocalObservable(() => ({
-        todosVisible: true,
-        loading: false,
-        toggleTodoVisibility() {
-            this.todosVisible = !this.todosVisible;
-          },
+      todosVisible: true,
+      loading: false,
+      toggleTodoVisibility() {
+          this.todosVisible = !this.todosVisible;
+      },
   }));
 
   return (
@@ -44,6 +30,12 @@ const App = () => {
       </div>
     </div>
   );
-};
+});
 
-export default observer(App);
+const AppWrapper = () => {
+  const {todos} = useStore();
+  return <App todos = {todos} />
+}
+
+export { App }
+export default AppWrapper;
