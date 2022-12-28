@@ -4,24 +4,20 @@ import styles from "./App.module.css";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import { useStore } from "./stores";
 import { useEffect } from "react";
-import { autorun } from "mobx";
+import { when } from "mobx";
 
 const App = () => {
-  // Get todos from our store 
-  const {todos} = useStore(); 
+  const { todos } = useStore()
 
   useEffect(() => {
-    const disposeAutorun = autorun(
-      () => {
-        console.log(todos.list.length);
-        throw new Error("Custom error");
-      },
-      {
-        delay: 1000, 
-        onError: (err) => console.log(err.message),
-      }
-    )
-  })
+    const promiseWhen = when(
+      () => !appUI.todosVisible, 
+    );
+  
+  promiseWhen.then(() => {
+    console.log("clean up!");
+  });
+}, []);
 
   // Functions used to toggle the to do list when clicking on the " + " / " - " button
   const appUI = useLocalObservable(() => ({
