@@ -12,7 +12,7 @@ export interface Todo {
 const TodoStore = () => makeAutoObservable({
   list: [] as Todo[],
   add(title: string) {
-    if (title.length < 3) {
+    if (title.length < 2) {
       return;
     }
     this.list.push({

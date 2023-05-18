@@ -3,7 +3,6 @@ import TodoList from "./Todo/TodoList";
 import styles from "./App.module.css";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import store, { useStore } from "./stores";
-import { toJS } from "mobx";
 
 const App = observer(({ todos } : {todos: typeof store.todos}) => {
   // Functions used to toggle the to do list when clicking on the " + " / " - " button
@@ -14,8 +13,6 @@ const App = observer(({ todos } : {todos: typeof store.todos}) => {
           this.todosVisible = !this.todosVisible;
       },
   }));
-
-  console.log(toJS(todos.list));
 
   return (
     <div className="App">
