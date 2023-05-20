@@ -50,7 +50,7 @@ describe("TodoList", () => {
     expect(todos.list.length).toBe(0);
   });
 
-  it("can add a todo with at leas 3 characters", () => {
+  it("can add a todo with at least 3 characters", () => {
     todos.add("123");
 
     expect(todos.list.length).toBe(1);

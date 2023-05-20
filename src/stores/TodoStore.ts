@@ -1,14 +1,17 @@
 // Create our TodoStore
 // Refactored TodoStore using factory function instead of classes
+// This function can be used to make an object's properties observable
 import { makeAutoObservable } from "mobx";
 
+// Define the structure of a Todo item using an interface
 export interface Todo {
   id: number;
   title: string;
   isDone: boolean;
 }
 
-// makeAutoObserbable make automatically all the properties observable
+// Define `TodoStore` as a function that creates an observable object
+// This object will hold our todos and methods for managing todos
 const TodoStore = () => makeAutoObservable({
   list: [] as Todo[],
   add(title: string) {

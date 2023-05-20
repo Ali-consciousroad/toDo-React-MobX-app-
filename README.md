@@ -1,5 +1,5 @@
 
-# Simple to do app with React and MobX
+# Simple to do app built using React and MobX
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
